@@ -255,7 +255,7 @@ def label_tweets():
 
 
 def plot_state_time():
-    states = ['California', 'New York', 'Texas', 'Washington', 'Oregon', 'Florida', 'Illinois', 'Colorado', 'Arizona', 'District of Columbia', 'All Posts']
+    states = ['All Posts', 'California', 'New York', 'Texas', 'Washington', 'Oregon', 'Florida', 'Illinois', 'Colorado', 'Arizona', 'District of Columbia']
     attitudes = ['deserving/undeserving', 'government critique', 'money/aid allocation',
                 'solutions/interventions', 'societal critique', 'harmful generalization',
                 'personal interaction', 'not in my backyard', 'media portrayal']

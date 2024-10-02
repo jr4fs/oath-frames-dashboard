@@ -152,7 +152,7 @@ def return_examples():
         for idx, row in labeled_data.iterrows():
             # Check if all selected attitudes are in the 'Attitude' list for this row
             if all(cat in row['Attitude'] for cat in cats_renamed):
-                selected_messages.append(row['tweet'])
+                selected_messages.append('Tweet: ' +row['tweet']+'\n'+'--------------------------------------------')
 
     # Display the selected messages
     if selected_messages:

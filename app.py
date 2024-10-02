@@ -311,7 +311,7 @@ def plot_state_time():
             color='attitude',
             title=f'Frequency of Attitudes in {selected_state} from {start_date} to {end_date}',
             labels={'frequency': 'Frequency', 'date': 'Date'},
-            markers=True
+            # markers=True
         )
 
         # Update layout for better presentation

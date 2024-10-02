@@ -313,9 +313,9 @@ st.code(bibtex, language='bibtex')
 col1, col2 = st.columns([1, 1])
 
 with col1:
-    st.image("engineering.png", width=200)  # University logo 1
-with col2:
-    st.image("social_work.png", width=200)  # University logo 2 (if needed)
+    st.image("usc.png", width=200)  # University logo 1
+# with col2:
+#     st.image("social_work.png", width=200)  # University logo 2 (if needed)
 
 
 

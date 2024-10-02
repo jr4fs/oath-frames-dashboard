@@ -13,7 +13,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from pandas import json_normalize
 import plotly.express as px
-
+import ast 
 _ENABLE_PROFILING = False
 
 if _ENABLE_PROFILING:
@@ -30,17 +30,17 @@ def plot_typology():
     data = {
         'Attitude': ['government critique', 'societal critique', 'money/aid allocation', 'solutions/interventions', 'harmful generalization', 'deserving/undeserving of resources', 'personal interaction', 'not in my backyard', 'media portrayal'],
         'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02],
-        'Messages': [
-            "these people are already housed possibly over crowded but at least housed .there are up to 130000 homeless living rough on our streets every night women and children in the back of vans and cars and the gov gives billions away to help third world countries.? time he looked here",
-            "i really hate people who have mango trees but don’t eat mangos so they just let them go to waste. i be walking by peoples yards and see hella mangos just laying there for days. give them to the homeless, don’t just let the mangos sit there and rot.",
-            "you propose atlanta/fulton county fund a homeless city. i’m asking what return are we getting for our tax dollars? police officers and firefighters provide a service which can justify us building a training for them. what justification do you have for your city for the homeless?",
-            "Ever think that instead of jail, A MENTALLY ILL HOMELESS PERSON needs actual help? Yes, I have compassion for his victims. But I also have compassion for this guy. He needs help. He doesn’t need to be thrown in jail where he’ll rot and probably be left to die. You pointed out",
-            "@mention you’re more confused than a homeless man in a house arrest. you can’t even put your words together. please get out.",
-            "Look at the illegals 500$ a night hotel rooms , destroying them, wasting food instead of giving to the homeless",
-            "i’m legit sad af. i saw a homeless woman and her daughter. i really wanted to help but i had no cash. i hope they are still there when i circle back around.",
-            "just found out the head of the opposition to a local affordable housing for the homeless project is a senior planner in the neighboring county",
-            "is the national news reporting on the homeless on the streets and encampments as well as random crime exaggerated? beautiful city and location.",
-        ]
+        # 'Messages': [
+        #     "these people are already housed possibly over crowded but at least housed .there are up to 130000 homeless living rough on our streets every night women and children in the back of vans and cars and the gov gives billions away to help third world countries.? time he looked here",
+        #     "i really hate people who have mango trees but don’t eat mangos so they just let them go to waste. i be walking by peoples yards and see hella mangos just laying there for days. give them to the homeless, don’t just let the mangos sit there and rot.",
+        #     "you propose atlanta/fulton county fund a homeless city. i’m asking what return are we getting for our tax dollars? police officers and firefighters provide a service which can justify us building a training for them. what justification do you have for your city for the homeless?",
+        #     "Ever think that instead of jail, homeless person needs actual help? Yes, I have compassion for his victims. But I also have compassion for this guy. He needs help. He doesn’t need to be thrown in jail where he’ll rot and probably be left to die. You pointed out",
+        #     "@mention you’re more confused than a homeless man in a house arrest. you can’t even put your words together. please get out.",
+        #     "Look at the illegals 500$ a night hotel rooms , destroying them, wasting food instead of giving to the homeless",
+        #     "i’m legit sad af. i saw a homeless woman and her daughter. i really wanted to help but i had no cash. i hope they are still there when i circle back around.",
+        #     "just found out the head of the opposition to a local affordable housing for the homeless project is a senior planner in the neighboring county",
+        #     "is the national news reporting on the homeless on the streets and encampments as well as random crime exaggerated? beautiful city and location.",
+        # ]
     }
 
     # Create a DataFrame
@@ -78,23 +78,87 @@ def plot_typology():
     # Display the Plotly chart in Streamlit
     st.plotly_chart(fig)
 
-    # Create a checkbox list for the categories
-    selected_categories = st.multiselect('Select Attitudes', df['Attitude'])
+    # # Create a checkbox list for the categories
+    # selected_categories = st.multiselect('Select Attitudes', df['Attitude'])
+
+    # # Initialize a variable to hold the messages
+    # selected_messages = []
+
+    # # Retrieve messages for the selected categories
+    # for category in selected_categories:
+    #     message = df.loc[df['Attitude'] == category, 'Messages'].values[0]
+    #     selected_messages.append(message)
+
+    # # Show the corresponding messages in a textbox if any categories are selected
+    # if selected_messages:
+    #     st.text_area("Example post labeled with attitude", value="\n".join(selected_messages), height=200)
+    # else:
+    #     st.text_area("Example post labeled with attitude", value="Select an attitude to see an example post", height=100)
+
+def return_examples():
+
+    data = {
+        'Attitude': ['government critique', 'societal critique', 'money/aid allocation', 'solutions/interventions', 'harmful generalization', 'deserving/undeserving of resources', 'personal interaction', 'not in my backyard', 'media portrayal'],
+        'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02],
+        # 'Messages': [
+        #     "these people are already housed possibly over crowded but at least housed .there are up to 130000 homeless living rough on our streets every night women and children in the back of vans and cars and the gov gives billions away to help third world countries.? time he looked here",
+        #     "i really hate people who have mango trees but don’t eat mangos so they just let them go to waste. i be walking by peoples yards and see hella mangos just laying there for days. give them to the homeless, don’t just let the mangos sit there and rot.",
+        #     "you propose atlanta/fulton county fund a homeless city. i’m asking what return are we getting for our tax dollars? police officers and firefighters provide a service which can justify us building a training for them. what justification do you have for your city for the homeless?",
+        #     "Ever think that instead of jail, homeless person needs actual help? Yes, I have compassion for his victims. But I also have compassion for this guy. He needs help. He doesn’t need to be thrown in jail where he’ll rot and probably be left to die. You pointed out",
+        #     "@mention you’re more confused than a homeless man in a house arrest. you can’t even put your words together. please get out.",
+        #     "Look at the illegals 500$ a night hotel rooms , destroying them, wasting food instead of giving to the homeless",
+        #     "i’m legit sad af. i saw a homeless woman and her daughter. i really wanted to help but i had no cash. i hope they are still there when i circle back around.",
+        #     "just found out the head of the opposition to a local affordable housing for the homeless project is a senior planner in the neighboring county",
+        #     "is the national news reporting on the homeless on the streets and encampments as well as random crime exaggerated? beautiful city and location.",
+        # ]
+    }
+
+    # Create a DataFrame
+    df = pd.DataFrame(data)
+
+    labeled_data = pd.read_csv('expert_annotations.csv')
+
+    frames_mod = []
+    temp = labeled_data['frames'].tolist()
+
+    for i in temp:
+        frames_mod.append(ast.literal_eval(i))
+    labeled_data['Attitude'] = frames_mod
 
     # Initialize a variable to hold the messages
+    mapping = {'deserving/undeserving':'deserving_undeserving_of_resources', 
+            'government critique':'government_critique', 
+            'money/aid allocation':'money_aid_resource_allocation',
+            'solutions/interventions':'solutions_interventions', 
+            'societal critique':'societal_critique', 
+            'harmful generalization':'harmful_generalization', 
+            'personal interaction':'personal_interaction_observation_of_homelessness',
+            'not in my backyard':'not_in_my_backyard',
+            'media portrayal':'media_portrayal'}
+    
+    
+    # Create a multiselect for the attitudes
+    selected_categories = st.multiselect('Select Attitudes', df['Attitude'])
+
+    # Initialize a variable to hold the filtered messages
     selected_messages = []
 
-    # Retrieve messages for the selected categories
-    for category in selected_categories:
-        message = df.loc[df['Attitude'] == category, 'Messages'].values[0]
-        selected_messages.append(message)
+    # Filter the DataFrame for rows where all selected attitudes are present
+    if selected_categories:
+        # Rename the selected attitudes using the mapping
+        cats_renamed = [mapping[category] for category in selected_categories]
 
-    # Show the corresponding messages in a textbox if any categories are selected
+        # Loop through rows in the DataFrame
+        for idx, row in labeled_data.iterrows():
+            # Check if all selected attitudes are in the 'Attitude' list for this row
+            if all(cat in row['Attitude'] for cat in cats_renamed):
+                selected_messages.append(row['tweet'])
+
+    # Display the selected messages
     if selected_messages:
         st.text_area("Example post labeled with attitude", value="\n".join(selected_messages), height=200)
     else:
         st.text_area("Example post labeled with attitude", value="Select an attitude to see an example post", height=100)
-
 
 def label_tweets():
     user_input = st.text_input("Enter a post:")
@@ -288,6 +352,7 @@ st.markdown("""##### We introduce a framing typology: Online Attitudes Towards H
 # label_tweets()
 st.markdown('## OATH-Frames Typology')
 plot_typology()
+return_examples()
 st.markdown('## Attitudes by State Mentions 🌎 and Time 📈')
 plot_state_time()
 

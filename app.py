@@ -269,7 +269,7 @@ def plot_state_time():
 today = date.today()
 
 st.set_page_config(
-    page_title="Online Attitudes Towards Homelessness (OATH)-Frames",
+    page_title="OATH-Frames",
     layout='wide',
     initial_sidebar_state='auto',
 )
@@ -301,7 +301,7 @@ st.markdown("## Citation")
 bibtex = """
 @article{ranjit2024oath,
   title={OATH-Frames: Characterizing Online Attitudes Towards Homelessness with LLM Assistants},
-  author={Ranjit, Jaspreet and Joshi, Brihi and Dorn, Rebecca and Petry, Laura and Koumoundour},
+  author={Ranjit, Jaspreet and Joshi, Brihi and Dorn, Rebecca and Petry, Laura and Koumoundouros, Olga and Bottarini, Jayne and Liu, Peichen and Rice, Eric and Swayamdipta, Swabha},
   journal={arXiv preprint arXiv:2406.14883},
   year={2024}
 }

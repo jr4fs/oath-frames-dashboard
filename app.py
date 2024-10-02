@@ -22,35 +22,7 @@ if _ENABLE_PROFILING:
     pr = cProfile.Profile()
     pr.enable()
 
-today = date.today()
 
-st.set_page_config(
-    page_title="OATH-Frames",
-    layout='wide',
-    initial_sidebar_state='auto',
-)
-
-# sidebar_selection = st.sidebar.radio(
-#     'Select data:',
-#     ['Select Counties', 'California'],
-# )
-
-
-## functions end here, title, sidebar setting and descriptions start here
-t1, t2 = st.columns(2)
-with t1:
-    st.markdown('# OATH-Frames Dashboard')
-
-# with t2:
-#     st.write("")
-#     st.write("")
-#     st.write("""
-#     **University of Southern California** | DILL Lab
-#     """)
-
-st.write("")
-st.markdown("""##### We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We analyze attitudes across states and time at a large scale on 2.4M posts. 
-""")
 
 
 def plot_typology():
@@ -293,12 +265,57 @@ def plot_state_time():
 
 
 
+
+today = date.today()
+
+st.set_page_config(
+    page_title="Online Attitudes Towards Homelessness (OATH)-Frames",
+    layout='wide',
+    initial_sidebar_state='auto',
+)
+
+t1, t2 = st.columns(2)
+with t1:
+    st.markdown('# Online Attitudes Towards Homelessness Dashboard')
+    st.subheader('OATH-Frames Dashboard')
+
+st.write("")
+st.markdown("""##### We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We analyze attitudes across states and time at a large scale on 2.4M posts. 
+""")
+
+
 # st.markdown('## Labeling Attitudes with Large Language Models 🤖')
 # label_tweets()
 st.markdown('## OATH-Frames Typology')
 plot_typology()
 st.markdown('## Attitudes by State Mentions 🌎 and Time 📈')
 plot_state_time()
+
+
+
+
+# Citation header
+st.markdown("## Citation")
+
+# Displaying the citation in a formatted box
+bibtex = """
+@article{ranjit2024oath,
+  title={OATH-Frames: Characterizing Online Attitudes Towards Homelessness with LLM Assistants},
+  author={Ranjit, Jaspreet and Joshi, Brihi and Dorn, Rebecca and Petry, Laura and Koumoundour},
+  journal={arXiv preprint arXiv:2406.14883},
+  year={2024}
+}
+"""
+
+st.code(bibtex, language='bibtex')
+
+# Create a horizontal layout with columns for logos
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    st.image("engineering.png", width=200)  # University logo 1
+with col2:
+    st.image("social_work.png", width=200)  # University logo 2 (if needed)
 
 
 

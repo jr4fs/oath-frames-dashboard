@@ -329,7 +329,6 @@ def plot_state_time():
 
 
 
-
 today = date.today()
 
 st.set_page_config(
@@ -338,14 +337,53 @@ st.set_page_config(
     initial_sidebar_state='auto',
 )
 
-t1, t2 = st.columns(2)
-with t1:
-    st.markdown('# Online Attitudes Towards Homelessness Dashboard')
-    st.subheader('OATH-Frames Dashboard')
+# Header panel
+st.markdown("""
+<style>
+.header-panel {
+    background-color: #f0f2f5; /* Light gray background */
+    border: 1px solid #d3d3d3; /* Light gray border */
+    padding: 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+.header-title {
+    font-size: 36px; /* Large font size for the title */
+    font-weight: bold; /* Bold title */
+}
+.header-subtitle {
+    font-size: 24px; /* Medium font size for the subtitle */
+}
+</style>
+
+<div class="header-panel">
+    <div class="header-title">Online Attitudes Towards Homelessness Dashboard</div>
+    <div class="header-subtitle">OATH-Frames Dashboard</div>
+</div>
+""", unsafe_allow_html=True)
 
 st.write("")
 st.markdown("""##### We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We analyze attitudes across states and time at a large scale on 2.4M posts. 
 """)
+
+
+
+# today = date.today()
+
+# st.set_page_config(
+#     page_title="OATH-Frames",
+#     layout='wide',
+#     initial_sidebar_state='auto',
+# )
+
+# t1, t2 = st.columns(2)
+# with t1:
+#     st.markdown('# Online Attitudes Towards Homelessness Dashboard')
+#     st.subheader('OATH-Frames Dashboard')
+
+# st.write("")
+# st.markdown("""##### We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We analyze attitudes across states and time at a large scale on 2.4M posts. 
+# """)
 
 
 # st.markdown('## Labeling Attitudes with Large Language Models 🤖')

@@ -25,22 +25,14 @@ if _ENABLE_PROFILING:
 
 
 
+
 def plot_typology():
     # Example Data
     data = {
-        'Attitude': ['government critique', 'societal critique', 'money/aid allocation', 'solutions/interventions', 'harmful generalization', 'deserving/undeserving of resources', 'personal interaction', 'not in my backyard', 'media portrayal'],
-        'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02],
-        # 'Messages': [
-        #     "these people are already housed possibly over crowded but at least housed .there are up to 130000 homeless living rough on our streets every night women and children in the back of vans and cars and the gov gives billions away to help third world countries.? time he looked here",
-        #     "i really hate people who have mango trees but don’t eat mangos so they just let them go to waste. i be walking by peoples yards and see hella mangos just laying there for days. give them to the homeless, don’t just let the mangos sit there and rot.",
-        #     "you propose atlanta/fulton county fund a homeless city. i’m asking what return are we getting for our tax dollars? police officers and firefighters provide a service which can justify us building a training for them. what justification do you have for your city for the homeless?",
-        #     "Ever think that instead of jail, homeless person needs actual help? Yes, I have compassion for his victims. But I also have compassion for this guy. He needs help. He doesn’t need to be thrown in jail where he’ll rot and probably be left to die. You pointed out",
-        #     "@mention you’re more confused than a homeless man in a house arrest. you can’t even put your words together. please get out.",
-        #     "Look at the illegals 500$ a night hotel rooms , destroying them, wasting food instead of giving to the homeless",
-        #     "i’m legit sad af. i saw a homeless woman and her daughter. i really wanted to help but i had no cash. i hope they are still there when i circle back around.",
-        #     "just found out the head of the opposition to a local affordable housing for the homeless project is a senior planner in the neighboring county",
-        #     "is the national news reporting on the homeless on the streets and encampments as well as random crime exaggerated? beautiful city and location.",
-        # ]
+        'Attitude': ['government critique', 'societal critique', 'money/aid allocation', 'solutions/interventions', 
+                     'harmful generalization', 'deserving/undeserving', 'personal interaction', 
+                     'not in my backyard', 'media portrayal'],
+        'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02]
     }
 
     # Create a DataFrame
@@ -48,17 +40,16 @@ def plot_typology():
 
     # Custom colors for each category
     custom_colors = {
-        'government critique': '#5BCBFF',  # Tomato Red
-        'societal critique': '#5BCBFF',  # Dodger Blue
-        'money/aid allocation': '#5BCBFF',  # Lime Green
-        'solutions/interventions': '#FFA828',  # Gold
-        'harmful generalization': '#96778A',   # Orange Red
-        'deserving/undeserving of resources': '#96778A',  # Tomato Red
-        'personal interaction': '#96778A',  # Dodger Blue
-        'not in my backyard': '#96778A',  # Lime Green
-        'media portrayal': '#96778A' # Gold
+        'government critique': '#5BCBFF',  
+        'societal critique': '#5BCBFF',  
+        'money/aid allocation': '#5BCBFF',  
+        'solutions/interventions': '#FFA828',  
+        'harmful generalization': '#96778A',  
+        'deserving/undeserving': '#96778A',  
+        'personal interaction': '#96778A',  
+        'not in my backyard': '#96778A',  
+        'media portrayal': '#96778A'
     }
-
 
     # Plotly Bar Chart with custom colors
     fig = px.bar(
@@ -68,49 +59,32 @@ def plot_typology():
         orientation='h',
         title="",
         color='Attitude',
-        color_discrete_map=custom_colors  # Map each category to a specific color
+        color_discrete_map=custom_colors
     )
+    
     fig.update_layout(showlegend=False)
     # Update y-axis to hide labels and increase font size
-    fig.update_yaxes(title_text='', tickfont=dict(size=20))  # Remove y-axis title and increase font size
+    fig.update_yaxes(title_text='', tickfont=dict(size=20))  
     fig.update_xaxes(tickfont=dict(size=18), title_font=dict(size=20))
 
-    # Display the Plotly chart in Streamlit
-    st.plotly_chart(fig)
+    # Create two columns for layout
+    col1, col2 = st.columns(2)
 
-    # # Create a checkbox list for the categories
-    # selected_categories = st.multiselect('Select Attitudes', df['Attitude'])
+    # Display the bar chart in the first column
+    with col1:
+        st.plotly_chart(fig)
 
-    # # Initialize a variable to hold the messages
-    # selected_messages = []
+    # Display the image in the second column
+    with col2:
+        st.image("typology_updated.png", width=600)  # Adjust the image path and size
 
-    # # Retrieve messages for the selected categories
-    # for category in selected_categories:
-    #     message = df.loc[df['Attitude'] == category, 'Messages'].values[0]
-    #     selected_messages.append(message)
 
-    # # Show the corresponding messages in a textbox if any categories are selected
-    # if selected_messages:
-    #     st.text_area("Example post labeled with attitude", value="\n".join(selected_messages), height=200)
-    # else:
-    #     st.text_area("Example post labeled with attitude", value="Select an attitude to see an example post", height=100)
 
 def return_examples():
 
     data = {
         'Attitude': ['government critique', 'societal critique', 'money/aid allocation', 'solutions/interventions', 'harmful generalization', 'deserving/undeserving of resources', 'personal interaction', 'not in my backyard', 'media portrayal'],
-        'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02],
-        # 'Messages': [
-        #     "these people are already housed possibly over crowded but at least housed .there are up to 130000 homeless living rough on our streets every night women and children in the back of vans and cars and the gov gives billions away to help third world countries.? time he looked here",
-        #     "i really hate people who have mango trees but don’t eat mangos so they just let them go to waste. i be walking by peoples yards and see hella mangos just laying there for days. give them to the homeless, don’t just let the mangos sit there and rot.",
-        #     "you propose atlanta/fulton county fund a homeless city. i’m asking what return are we getting for our tax dollars? police officers and firefighters provide a service which can justify us building a training for them. what justification do you have for your city for the homeless?",
-        #     "Ever think that instead of jail, homeless person needs actual help? Yes, I have compassion for his victims. But I also have compassion for this guy. He needs help. He doesn’t need to be thrown in jail where he’ll rot and probably be left to die. You pointed out",
-        #     "@mention you’re more confused than a homeless man in a house arrest. you can’t even put your words together. please get out.",
-        #     "Look at the illegals 500$ a night hotel rooms , destroying them, wasting food instead of giving to the homeless",
-        #     "i’m legit sad af. i saw a homeless woman and her daughter. i really wanted to help but i had no cash. i hope they are still there when i circle back around.",
-        #     "just found out the head of the opposition to a local affordable housing for the homeless project is a senior planner in the neighboring county",
-        #     "is the national news reporting on the homeless on the streets and encampments as well as random crime exaggerated? beautiful city and location.",
-        # ]
+        'Proportion of posts labeled with attitude': [0.31, 0.16, 0.12, 0.35, 0.23, 0.12, 0.1, 0.05, 0.02]
     }
 
     # Create a DataFrame
@@ -363,8 +337,52 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.write("")
-st.markdown("""##### We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We analyze attitudes across states and time at a large scale on 2.4M posts. 
-""")
+st.markdown(""" Public attitudes towards key societal issues, expressed on online media, are of immense value in policy and reform efforts, yet challenging to understand at scale. We study one such social issue: homelessness in the U.S., by leveraging the remarkable capabilities of large language models to assist social work experts in analyzing millions of posts from Twitter. We introduce a framing typology: Online Attitudes Towards Homelessness (OATH) Frames: nine hierarchical frames capturing critiques, responses and perceptions. We release annotations with varying degrees of assistance from language models, with immense benefits in scaling: 6.5x speedup in annotation time while only incurring a 3 point F1 reduction in performance with respect to the domain experts. Our experiments demonstrate the value of modeling OATH-Frames over existing sentiment and toxicity classifiers. Our large-scale analysis with predicted OATH-Frames on 2.4M posts on homelessness reveal key trends in attitudes across states, time periods and vulnerable populations, enabling new insights on the issue. Our work provides a general framework to understand nuanced public attitudes at scale, on issues beyond homelessness.""")
+
+
+
+
+# Custom CSS for styling buttons
+st.markdown("""
+    <style>
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        margin-right: 10px;  /* Space between buttons */
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background-color: white;
+        border: 2px solid #888;  /* Border color */
+        border-radius: 30px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .button img {
+        margin-right: 10px;
+        filter: brightness(0);  /* Make icons black */
+    }
+    .button:hover {
+        background-color: #555;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Create buttons directly in one markdown section
+st.markdown("""
+    <a href="https://arxiv.org/abs/2406.14883" target="_blank" class="button">
+        <img src="https://img.icons8.com/material-outlined/24/000000/document--v1.png"/> Paper
+    </a>
+    <a href="https://github.com/dill-lab/oath-frames" target="_blank" class="button">
+        <img src="https://img.icons8.com/material-outlined/24/000000/github.png"/> Code
+    </a>
+    <a href="#https://dill-lab.github.io/oath-frames/" target="_blank" class="button">
+        <img src="https://img.icons8.com/material-outlined/24/000000/image.png"/> Blog
+    </a>
+""", unsafe_allow_html=True)
+
 
 
 
@@ -395,6 +413,76 @@ st.markdown('## Attitudes by State Mentions 🌎 and Time 📈')
 plot_state_time()
 
 
+# st.markdown("## About Us")
+
+# st.markdown("This project was led by a team of researchers in the [Dill Lab](https://dill-lab.github.io/) in the USC NLP Department and the USC Dworak-Peck School of Social Work")
+
+# import streamlit as st
+
+# # Define the number of people and their details
+# people = [
+#     {
+#         "name": "Jaspreet Ranjit",
+#         "image": st.image("jaspreet.png", width=100),
+#         "profile_link": "https://jr4fs.github.io/"
+#     },
+#     {
+#         "name": "Brihi Joshi",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://brihijoshi.github.io/"
+#     },
+#     {
+#         "name": "Rebecca Dorn",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://rebedorn.github.io/"
+#     },
+#     {
+#         "name": "Laura Petry",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://scholar.google.com/citations?user=fd1Pq94AAAAJ&hl=en"
+#     },
+#     {
+#         "name": "Olga Koumoundouros",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://dworakpeck.usc.edu/academic-programs/doctor-of-philosophy/phd-current-student-bios"
+#     },
+#     {
+#         "name": "Jayne Bottarini",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://www.linkedin.com/in/jayne-bottarini/"
+#     },
+#     {
+#         "name": "Peichen Liu",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://dworakpeck.usc.edu/academic-programs/doctor-of-philosophy/phd-current-student-bios"
+#     },
+#     {
+#         "name": "Eric Rice",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://dworakpeck.usc.edu/academics/faculty-directory/eric-rice"
+#     },
+#     {
+#         "name": "Swabha Swayamdipta",
+#         "image": "https://via.placeholder.com/100",
+#         "profile_link": "https://swabhs.com/"
+#     }
+# ]
+
+# cols = st.columns(len(people))
+
+
+# for col, person in zip(cols, people):
+#     with col:
+#         # Create a panel for each person with a paper link icon
+#         st.markdown(f"""
+#             <div style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; text-align: center; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);">
+#                 <img src="{person['image']}" alt="{person['name']}" style="width: 100px; height: auto; border-radius: 50%; margin-bottom: 10px;"/>
+#                 <h4>{person['name']}</h4>
+#                 <a href="{person['profile_link']}" target="_blank">
+#                     <img src="https://img.icons8.com/material-outlined/24/000000/link.png" alt="Link" style="width: 24px; height: 24px;"/>
+#                 </a>
+#             </div>
+#         """, unsafe_allow_html=True)
 
 
 # Citation header

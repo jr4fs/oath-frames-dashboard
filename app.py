@@ -335,7 +335,6 @@ st.set_page_config(
     page_title="OATH-Frames",
     layout='wide',
     initial_sidebar_state='auto',
-    theme={"base": "light"}
 )
 
 # Header panel

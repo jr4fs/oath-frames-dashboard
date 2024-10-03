@@ -72,11 +72,12 @@ def plot_typology():
 
     # Display the bar chart in the first column
     with col1:
-        st.plotly_chart(fig)
+        st.image("typology_updated.png", width=600)  # Adjust the image path and size
 
     # Display the image in the second column
     with col2:
-        st.image("typology_updated.png", width=600)  # Adjust the image path and size
+        st.plotly_chart(fig)
+
 
 
 
